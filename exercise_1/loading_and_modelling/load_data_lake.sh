@@ -9,11 +9,11 @@ unzip Hospital_Revised_Flatfiles.zip
 hdfs dfs -mkdir /user/w205/hospital_compare
 
 #remove headers, rename file and move to HDFS folder
-tail -n +2 'Hospital General Information.csv' > hospitals.csv | hdfs dfs -put hospitals.csv /user/w205/hospital_compare
-tail -n +2 'Timely and Effective Care - Hospital.csv' > effective_care.csv | hdfs dfs -put effective_care.csv /user/w205/hospital_compare
-tail -n +2 'Readmissions and Deaths - Hospital.csv' > readmissions.csv | hdfs dfs -put readmissions.csv /user/w205/hospital_compare
-tail -n +2 'Measure Dates.csv' > measures.csv | hdfs dfs -put measures.csv /user/w205/hospital_compare
-tail -n +2 'hvbp_hcahps_05_28_2015.csv' > survey_responses.csv | hdfs dfs -put survey_responses.csv /user/w205/hospital_compare
+tail -n +2 Hospital_Revised_Flatfiles/'Hospital General Information.csv' > hospitals.csv | hdfs dfs -put hospitals.csv /user/w205/hospital_compare
+tail -n +2 Hospital_Revised_Flatfiles/'Timely and Effective Care - Hospital.csv' > effective_care.csv | hdfs dfs -put effective_care.csv /user/w205/hospital_compare
+tail -n +2 Hospital_Revised_Flatfiles/'Readmissions and Deaths - Hospital.csv' > readmissions.csv | hdfs dfs -put readmissions.csv /user/w205/hospital_compare
+tail -n +2 Hospital_Revised_Flatfiles/'Measure Dates.csv' > measures.csv | hdfs dfs -put measures.csv /user/w205/hospital_compare
+tail -n +2 Hospital_Revised_Flatfiles/'hvbp_hcahps_05_28_2015.csv' > survey_responses.csv | hdfs dfs -put survey_responses.csv /user/w205/hospital_compare
 
 #create a lingering record of headers for files
 touch headers.txt
@@ -29,5 +29,5 @@ head -n 1 'hvbp_hcahps_05_28_2015.csv' >> headers.txt
 hdfs dfs -put headers.txt /user/w205/hospital_compare
 
 #delete original zip file & folder
-rm -r Hospital_Revised_Flatfiles/
+rm -r -f Hospital_Revised_Flatfiles/
 rm Hospital_Revised_Flatfiles.zip
