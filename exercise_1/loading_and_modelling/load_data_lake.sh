@@ -7,7 +7,8 @@
 
 unzip Hospital_Revised_Flatfiles.zip -d Hospital_Revised_Flatfiles
 
-#create HDFS folder for hospital files
+#create HDFS folder for hospital files (first delete it if it exists already)
+hdfs dfs -rm -r /user/w205/hospital_compare
 hdfs dfs -mkdir /user/w205/hospital_compare
 
 cd Hospital_Revised_Flatfiles
@@ -39,5 +40,5 @@ hdfs dfs -put ../headers.txt /user/w205/hospital_compare
 
 cd ..
 #delete original zip file & folder
-rm Hospital_Revised_Flatfiles
+rm -r -f Hospital_Revised_Flatfiles
 rm Hospital_Revised_Flatfiles.zip
