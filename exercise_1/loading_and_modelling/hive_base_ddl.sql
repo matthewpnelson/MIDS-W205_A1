@@ -19,4 +19,4 @@ WITH SERDEPROPERTIES (
     "escapeChar" = "\\"
 )
 STORED AS TEXTFILE
-LOCATION '/user/w205/hospital_compare/hospitals/';
+LOCATION '/user/w205/hospital_compare/hospitals';
