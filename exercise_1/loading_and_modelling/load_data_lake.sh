@@ -2,8 +2,10 @@
 
 
 #download the zip containing all hospital files & unzip
-wget -o hospitals.zip https://data.medicare.gov/views/bg9k-emty/files/6c902f45-e28b-42f5-9f96-ae9d1e583472?content_type=application%2Fzip%3B%20charset%3Dbinary&filename=Hospital_Revised_Flatfiles.zip
-unzip hospitals.zip
+wget -qO- -O tmp.zip https://data.medicare.gov/views/bg9k-emty/files/6c902f45-e28b-42f5-9f96-ae9d1e583472?content_type=application%2Fzip%3B%20charset%3Dbinary&filename=Hospital_Revised_Flatfiles.zip && unzip tmp.zip && rm tmp.zip
+#wget -o hospitals.zip https://data.medicare.gov/views/bg9k-emty/files/6c902f45-e28b-42f5-9f96-ae9d1e583472?content_type=application%2Fzip%3B%20charset%3Dbinary&filename=Hospital_Revised_Flatfiles.zip
+
+#unzip hospitals.zip
 
 #create HDFS folder for hospital files
 hdfs dfs -mkdir /user/w205/hospital_compare
