@@ -1,24 +1,21 @@
 
 DROP TABLE hospitals;
 
-CREATE EXTERNAL TABLE hospitals
-(
-    hospital_id string,
-    hospital_name string,
-    address string,
-    city string,
-    state string,
-    zip_code string,
-    county_name string,
-    phone_number string,
-    hospital_type string,
-    hospital_ownership string,
-    emergency_services string)
+CREATE EXTERNAL TABLE hospitals(hospital_id STRING,
+    hospital_name STRING,
+    address STRING,
+    city STRING,
+    state STRING,
+    zip_code STRING,
+    county_name STRING,
+    phone_number STRING,
+    hospital_type STRING,
+    hospital_ownership STRING,
+    emergency_services STRING)
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
     "separatorChar" = ",",
     "quoteChar" = "",
-    "escapeChar" = '\\'
-)
+    "escapeChar" = '\\')
 STORED AS TEXTFILE
 LOCATION '/user/w205/hospital_compare/hospitals/';
