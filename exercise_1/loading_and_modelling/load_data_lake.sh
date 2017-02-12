@@ -5,10 +5,11 @@
 #wget -qO- -O tmp.zip https://data.medicare.gov/views/bg9k-emty/files/6c902f45-e28b-42f5-9f96-ae9d1e583472?content_type=application%2Fzip%3B%20charset%3Dbinary&filename=Hospital_Revised_Flatfiles.zip && unzip tmp.zip && rm tmp.zip
 #wget -o hospitals.zip https://data.medicare.gov/views/bg9k-emty/files/6c902f45-e28b-42f5-9f96-ae9d1e583472?content_type=application%2Fzip%3B%20charset%3Dbinary&filename=Hospital_Revised_Flatfiles.zip
 
-unzip Hospital_Revised_Flatfiles.zip
+unzip Hospital_Revised_Flatfiles.zip -d Hospital_Revised_Flatfiles
 
 #create HDFS folder for hospital files
 hdfs dfs -mkdir /user/w205/hospital_compare
+
 cd Hospital_Revised_Flatfiles
 
 #remove headers, rename file and move to HDFS folder
@@ -33,5 +34,5 @@ hdfs dfs -put ../headers.txt /user/w205/hospital_compare
 
 cd ..
 #delete original zip file & folder
-rm -r -f Hospital_Revised_Flatfiles/
+rm Hospital_Revised_Flatfiles
 rm Hospital_Revised_Flatfiles.zip
