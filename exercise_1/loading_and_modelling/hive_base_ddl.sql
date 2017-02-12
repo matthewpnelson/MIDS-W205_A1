@@ -15,10 +15,10 @@ CREATE EXTERNAL TABLE hospitals
     hospital_ownership string,
     emergency_services string)
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
-WITH SERDEPROPERTIES(
+WITH SERDEPROPERTIES (
     "separatorChar" = ",",
     "quoteChar" = "",
     "escapeChar" = '\\'
 )
 STORED AS TEXTFILE
-LOCATION '/user/w205/hospital_compare/hospitals';
+LOCATION '/user/w205/hospital_compare/hospitals/';
