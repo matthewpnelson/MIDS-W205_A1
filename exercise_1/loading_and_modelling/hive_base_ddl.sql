@@ -1,7 +1,7 @@
 
 DROP TABLE hospitals;
 
-CREATE TABLE hospitals(hospital_id STRING,
+CREATE EXTERNAL TABLE hospitals(hospital_id STRING,
     hospital_name STRING,
     address STRING,
     city STRING,
