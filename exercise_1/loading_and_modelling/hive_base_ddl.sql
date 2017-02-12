@@ -1,7 +1,7 @@
 
 DROP TABLE hospitals;
 
-CREATE EXTERNAL TABLE hospitals(hospital_id STRING,
+CREATE TABLE hospitals(hospital_id STRING,
     hospital_name STRING,
     address STRING,
     city STRING,
@@ -15,7 +15,7 @@ CREATE EXTERNAL TABLE hospitals(hospital_id STRING,
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
     "separatorChar" = ",",
-    "quoteChar" = "",
+    "quoteChar" = "'",
     "escapeChar" = "\\"
 )
 STORED AS TEXTFILE
