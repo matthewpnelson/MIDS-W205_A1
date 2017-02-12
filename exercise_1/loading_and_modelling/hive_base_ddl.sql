@@ -12,8 +12,7 @@ CREATE EXTERNAL TABLE hospitals(hospital_id STRING,
     phone_number STRING,
     hospital_type STRING,
     hospital_ownership STRING,
-    emergency_services STRING,
-    PRIMARY KEY(hospital_id))
+    emergency_services STRING)
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
     "separatorChar" = ",",
