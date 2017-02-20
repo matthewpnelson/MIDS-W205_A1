@@ -8,7 +8,7 @@
 unzip Hospital_Revised_Flatfiles.zip -d Hospital_Revised_Flatfiles
 
 #create HDFS folder for hospital files
-
+su - w205
 hdfs dfs -mkdir /user/w205/hospital_compare
 
 cd Hospital_Revised_Flatfiles
