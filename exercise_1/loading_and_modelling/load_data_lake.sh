@@ -7,9 +7,8 @@
 
 unzip Hospital_Revised_Flatfiles.zip -d Hospital_Revised_Flatfiles
 
-#create HDFS folder for hospital files (first delete it if it exists already)
-su - w205
-hdfs dfs -rm -r /user/w205/hospital_compare
+#create HDFS folder for hospital files
+
 hdfs dfs -mkdir /user/w205/hospital_compare
 
 cd Hospital_Revised_Flatfiles
@@ -52,5 +51,3 @@ hdfs dfs -put ../headers.txt /user/w205/hospital_compare
 #delete original zip file & folder
 #rm -r -f Hospital_Revised_Flatfiles
 #rm Hospital_Revised_Flatfiles.zip
-
-sudo -i
