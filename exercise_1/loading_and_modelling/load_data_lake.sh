@@ -47,6 +47,6 @@ head -n 1 'hvbp_hcahps_05_28_2015.csv' >> ../headers.txt
 hdfs dfs -put ../headers.txt /user/w205/hospital_compare
 
 cd ..
-delete original zip file & folder
+#delete original zip file & folder
 rm -r -f Hospital_Revised_Flatfiles
 rm Hospital_Revised_Flatfiles.zip

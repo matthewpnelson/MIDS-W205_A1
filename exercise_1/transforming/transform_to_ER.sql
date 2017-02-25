@@ -1,36 +1,73 @@
--- No Need to Recreate Hospitals Table, can utilize the original import
-
+-- No Need to Recreate hospitals Table, can utilize the original import
+-- No Need to Recreate survey_averages Table, can utilize the original import
 
 -- Create Procedures (Measures) Table
-CREATE TABLE AS SELECT *
-INTO procedures_detail
+DROP TABLE procedures_detail_temp1;
+
+CREATE TABLE procedures_detail_temp1
+AS SELECT *
 FROM procedures;
 
--- Complete a right outer join with the effective care table in order to bring
+-- Complete a left outer join with the effective care table in order to bring
 -- in all information relating to procedures and the hospitals which perform
 -- them
-SELECT (effective_care.hospital_id,
-    effective_care.condition,
-effective_care.score,
-effective_care.sample,
-effective_care.footnote)
-INTO procedures_detail
-FROM procedures_detail
-RIGHT OUTER JOIN effective_care
-ON procedures_detail.procedure_id=effective_care.procedure_id;
 
--- Complete a right outer join with the readmissions table in order to bring
+-- Working code, duplicates the table but ads joined data.
+-- Could not get INSERT INTO SELECT procedures_detail working...
+DROP TABLE procedures_detail_temp2;
+
+CREATE TABLE procedures_detail_temp2 AS
+SELECT procedures_detail_temp1.*,
+    care.hospital_id AS care_hospital_id,
+    care.condition AS care_condition,
+    care.score AS care_score,
+    care.sample AS care_sample,
+    care.footnote AS care_footnote
+FROM procedures_detail_temp1
+LEFT OUTER JOIN care
+ON procedures_detail_temp1.procedure_id = care.procedure_id;
+
+DROP TABLE procedures_detail_temp1;
+
+-- Couldn't get this working...
+--INSERT INTO procedures_detail (care_hospital_id, care_condition, care_score, care_sample, care_footnote)
+--SELECT care.hospital_id AS care_hospital_id,
+--    care.condition AS care_condition,
+--    care.score AS care_score,
+--    care.sample AS care_sample,
+--    care.footnote AS care_footnote
+--FROM procedures_detail
+--LEFT OUTER JOIN care
+--ON procedures_detail.procedure_id = care.procedure_id;
+
+
+-- Complete a left outer join with the readmissions table in order to bring
 -- in all information relating to procedures and the hospitals which perform
 -- them
-SELECT (readmissions.hospital_id,
-    readmissions.condition,
-    readmissions.national_comparison,
-    readmissions.denominator,
-    readmissions.score,
-    readmissions.lower_est,
-    readmissions.higher_est,
-    readmissions.footnote)
-INTO procedures_detail
-FROM procedures_detail
-RIGHT OUTER JOIN readmissions
-ON procedures_detail.procedure_id=readmissions.procedure_id;
+DROP TABLE procedures_detail;
+
+CREATE TABLE procedures_detail AS
+SELECT procedures_detail_temp2.*,
+    readmissions.hospital_id AS readmissions_hospital_id,
+    readmissions.condition AS readmissions_condition,
+    readmissions.national_comparison AS readmissions_national_comparison,
+    readmissions.denominator AS readmissions_denominator,
+    readmissions.score AS readmissions_score,
+    readmissions.lower_est AS readmissions_lower_est,
+    readmissions.higher_est AS readmissions_higher_est,
+    readmissions.footnote AS readmissions_footnote
+FROM procedures_detail_temp2
+LEFT OUTER JOIN readmissions
+ON procedures_detail_temp2.procedure_id = readmissions.procedure_id;
+
+DROP TABLE procedures_detail_temp2;
+
+
+-- to query column names
+SHOW COLUMNS FROM procedures_detail
+
+-- to query you need to use double quotes!?!
+SELECT *
+FROM procedures_detail3
+WHERE procedure_id = '"AMI_7a"'
+LIMIT 10;
