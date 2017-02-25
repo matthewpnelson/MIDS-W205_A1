@@ -64,14 +64,14 @@ DROP TABLE procedures_detail_temp2;
 
 
 -- to query column names
-SHOW COLUMNS FROM care
+-- SHOW COLUMNS FROM care
 
 -- to query you need to use double quotes!?!
-SELECT measure_start, measure_
-FROM procedures_detail
-WHERE procedure_id = '"AMI_7a"'
-LIMIT 10;
+-- SELECT measure_start, measure_
+-- FROM procedures_detail
+-- WHERE procedure_id = '"AMI_7a"'
+-- LIMIT 10;
 
 -- change data type?
-ALTER TABLE care
-ALTER COLUMN score INTEGER
+--ALTER TABLE care
+--ALTER COLUMN score INTEGER
