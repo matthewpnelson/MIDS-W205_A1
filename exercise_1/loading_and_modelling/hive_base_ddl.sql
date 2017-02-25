@@ -38,8 +38,8 @@ CREATE EXTERNAL TABLE care(
     condition STRING,
     procedure_id STRING,
     measure_name STRING,
-    score SMALLINT,
-    sample INT,
+    score INTEGER,
+    sample INTEGER,
     footnote STRING,
     measure_start DATE,
     measure_end DATE)
@@ -69,10 +69,10 @@ CREATE EXTERNAL TABLE readmissions(
     procedure_id STRING,
     condition STRING,
     national_comparison STRING,
-    denominator INT,
-    score SMALLINT,
-    lower_est SMALLINT,
-    higher_est SMALLINT,
+    denominator INTEGER,
+    score INTEGER,
+    lower_est INTEGER,
+    higher_est INTEGER,
     footnote STRING,
     measure_start DATE,
     measure_end DATE)
@@ -141,8 +141,8 @@ CREATE EXTERNAL TABLE surveys(
     Overall_Rating_of_Hospital_Achievement_Points STRING,
     Overall_Rating_of_Hospital_Improvement_Points STRING,
     Overall_Rating_of_Hospital_Dimension_Score STRING,
-    HCAHPS_Base_Score INT,
-    HCAHPS_Consistency_Score INT)
+    HCAHPS_Base_Score INTEGER,
+    HCAHPS_Consistency_Score INTEGER)
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
     "separatorChar" = ",",
