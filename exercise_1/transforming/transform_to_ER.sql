@@ -1,5 +1,7 @@
 
--- Drop extra ""'s from Hospital Table
+-- This script creates tables as select from the original imported tables from the hive_base_ddl.sql script
+
+-- Drop extra ""'s from all fields in Hospital Table
 DROP TABLE hospital_edit;
 
 CREATE TABLE hospital_edit
@@ -20,7 +22,7 @@ FROM hospitals;
 
 
 
--- Drop extra ""'s from Survey Table and keep only final scores
+-- Drop extra ""'s from all fields in Survey Table and keep only final scores
 DROP TABLE survey_edit;
 
 CREATE TABLE survey_edit
@@ -61,7 +63,6 @@ SELECT
 FROM procedures
 LEFT OUTER JOIN care
 ON procedures.procedure_id = care.procedure_id;
-
 
 
 DROP TABLE procedures_detail;
