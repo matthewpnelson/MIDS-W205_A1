@@ -16,3 +16,13 @@ SELECT hospitals.hospital_id, hospitals.hospital_name,
     GROUP BY procedures_detail.care_score
     ORDER BY Avg_Score DESC
     LIMIT 50;
+
+
+SELECT max(cast('care_score' AS BIGINT))
+FROM procedures_detail
+ORDER BY score_int ASC
+LIMIT 10;
+
+SELECT CAST(care_score AS SMALLINT)
+FROM procedures_detail
+LIMIT 50;

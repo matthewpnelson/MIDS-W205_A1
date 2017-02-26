@@ -38,7 +38,7 @@ CREATE EXTERNAL TABLE care(
     condition STRING,
     procedure_id STRING,
     measure_name STRING,
-    score STRING,-- INT
+    score INT,-- INT
     sample STRING,-- INT
     footnote STRING,
     measure_start DATE,
@@ -70,7 +70,7 @@ CREATE EXTERNAL TABLE readmissions(
     condition STRING,
     national_comparison STRING,
     denominator STRING,
-    score STRING, -- INT
+    score INT, -- INT
     lower_est STRING,-- INT
     higher_est STRING,-- INT
     footnote STRING,
